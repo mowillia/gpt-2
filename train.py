@@ -284,6 +284,14 @@ def main():
                         avg=avg_loss[0] / avg_loss[1]))
 
                 counter += 1
+                
+                if counter == 1010:
+                    print('Ran '+str(1010)+' steps.')
+                    save()
+                    sys.exit(1)
+                    
+                    
+                    
         except KeyboardInterrupt:
             print('interrupted')
             save()
