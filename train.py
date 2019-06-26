@@ -3,6 +3,7 @@
 #  PYTHONPATH=src ./train --dataset <file|directory|glob>
 
 import argparse
+import sys
 import json
 import os
 import numpy as np
