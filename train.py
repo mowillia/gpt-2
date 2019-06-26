@@ -163,7 +163,7 @@ def main():
                     os.path.join('models', args.model_name))
         elif args.restore_from == 'fresh':
             ckpt = tf.train.latest_checkpoint(
-                os.path.join('models', args.model_name))
+                os.path.join('models', args.model_name)) 
         else:
             ckpt = tf.train.latest_checkpoint(args.restore_from)
         print('Loading checkpoint', ckpt)
