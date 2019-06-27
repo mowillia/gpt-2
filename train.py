@@ -286,10 +286,10 @@ def main():
 
                 counter += 1
                 
-                if counter == 1010:
+                if counter == 100:
                     print('Ran '+str(1010)+' steps.')
                     save()
-                    sys.exit(1)
+                    break    # break here
                     
                     
                     
