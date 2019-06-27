@@ -287,7 +287,7 @@ def main():
                 counter += 1
                 
                 if counter == 1000:
-                    print('Ran '+str(1010)+' steps.')
+                    print('Ran '+str(1000)+' steps.')
                     save()
                     break    # break here
                     
