@@ -55,7 +55,7 @@ parser.add_argument('--counter_end', metavar='COUNT', type=int, default=0, help=
 
 def maketree(path):
     try:
-        os.makedirs(path)
+        os.makedirs(path) 
     except:
         pass
 
