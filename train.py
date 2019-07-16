@@ -51,7 +51,7 @@ parser.add_argument('--val_dataset', metavar='PATH', type=str, default=None, hel
 parser.add_argument('--val_batch_size', metavar='SIZE', type=int, default=2, help='Batch size for validation.')
 parser.add_argument('--val_batch_count', metavar='N', type=int, default=40, help='Number of batches for validation.')
 parser.add_argument('--val_every', metavar='STEPS', type=int, default=0, help='Calculate validation loss every STEPS steps.')
-
+parser.add_argument('--counter_end', metavar='COUNT', type=int, default=0, help='Run the training for COUNT number of steps.')
 
 def maketree(path):
     try:
@@ -286,8 +286,8 @@ def main():
 
                 counter += 1
                 
-                if counter == 1000:
-                    print('Ran '+str(1000)+' steps.')
+                if counter == args.counter_end:
+                    print('Ran '+str(args.counter_end)+' steps.')
                     save()
                     break    # break here
                     
