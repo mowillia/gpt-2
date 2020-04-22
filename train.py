@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 ## Modified version of NSheppherd's GPT2 Training Code. 
 ## -- Incorporated an argument to choose length of training.
 
-#!/usr/bin/env python3
 # Usage:
 #  PYTHONPATH=src ./train --dataset <file|directory|glob>
 
