@@ -118,13 +118,13 @@ def main():
             top_k=args.top_k,
             top_p=args.top_p)
 
-        all_vars = [v for v in tf.trainable_variables() if 'model' in v.name]
+        all_vars = [v for v in tf.compat.v1.trainable_variables() if 'model' in v.name]
         train_vars = [v for v in all_vars if '/h' in v.name] if args.only_train_transformer_layers else all_vars
 
         if args.optimizer == 'adam':
-            opt = tf.train.AdamOptimizer(learning_rate=args.learning_rate)
+            opt = tf.compat.v1.train.AdamOptimizer(learning_rate=args.learning_rate)
         elif args.optimizer == 'sgd':
-            opt = tf.train.GradientDescentOptimizer(learning_rate=args.learning_rate)
+            opt = tf.compat.v1.train.GradientDescentOptimizer(learning_rate=args.learning_rate)
         else:
             exit('Bad optimizer:', args.optimizer)
 
@@ -147,17 +147,17 @@ def main():
             opt_apply = opt.apply_gradients(opt_grads)
             summary_loss = tf.summary.scalar('loss', loss)
 
-        summary_lr = tf.summary.scalar('learning_rate', args.learning_rate)
-        summaries = tf.summary.merge([summary_lr, summary_loss])
+        summary_lr = tf.compat.v1.summary.scalar('learning_rate', args.learning_rate)
+        summaries = tf.compat.v1.summary.merge([summary_lr, summary_loss])
 
-        summary_log = tf.summary.FileWriter(
+        summary_log = tf.compat.v1.summary.FileWriter(
             os.path.join(CHECKPOINT_DIR, args.run_name))
 
-        saver = tf.train.Saver(
+        saver = tf.compat.v1.train.Saver(
             var_list=all_vars,
             max_to_keep=5,
             keep_checkpoint_every_n_hours=2)
-        sess.run(tf.global_variables_initializer())
+        sess.run(tf.compat.v1.global_variables_initializer())
 
         if args.restore_from == 'latest':
             ckpt = tf.train.latest_checkpoint(
